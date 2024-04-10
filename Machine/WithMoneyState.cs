@@ -1,6 +1,6 @@
 namespace Machine;
 
-public class WithMoneyState : IState
+internal class WithMoneyState : IState
 {
     private StateMachine _machine;
 
@@ -19,5 +19,10 @@ public class WithMoneyState : IState
     {
         var bubble = _machine.PopBubble();
         return bubble;
+    }
+
+    public StateName GetStateName()
+    {
+        return StateName.WithMoney;
     }
 }

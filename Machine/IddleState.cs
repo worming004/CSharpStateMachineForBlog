@@ -1,6 +1,6 @@
 namespace Machine;
 
-public class IddleState : IState
+internal class IddleState : IState
 {
     private StateMachine _machine;
 
@@ -13,12 +13,18 @@ public class IddleState : IState
     public void PutMoney(decimal amount)
     {
         _machine.AddMoney(amount);
+        _machine.Attach(new WithMoneyState(_machine));
     }
 
     public Bubble Turn()
     {
         // Nothing
         return null;
+    }
+
+    public StateName GetStateName()
+    {
+        return StateName.Iddle;
     }
 }
 
