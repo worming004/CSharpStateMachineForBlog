@@ -18,6 +18,7 @@ internal class WithMoneyState : IState
     public Bubble Turn()
     {
         var bubble = _machine.PopBubble();
+        _machine.Attach(new IddleState(_machine));
         return bubble;
     }
 
