@@ -17,13 +17,14 @@ public class StateMachineUseCaseTests
 
         notRandom = new NotRandom { NextRandom = 1 };
         bubbles = new List<Bubble>() { new Bubble("Charizard"), new Bubble("Mewtwo") };
-        machine = new StateMachine(null, bubbles, notRandom);
+        machine = StateMachine.New(bubbles, notRandom);
     }
 
     [Fact]
     public void Machine_WholeUseCase_UserPutMoney_GotBubbles()
     {
         var expectedBubble = bubbles[1];
+        notRandom.NextRandom = 1;
         machine.PutMoney(10);
         var gotBubble = machine.Turn();
 

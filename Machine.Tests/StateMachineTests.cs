@@ -12,7 +12,7 @@ public class StateMachineTests
     public void Machine_AcceptMoney_ShouldChangeStateToWithMoney()
     {
         // Arrange
-        var machine = new StateMachine(null, new List<Bubble>() { new Bubble("Charizard") }, null);
+        var machine = StateMachine.New(new List<Bubble>() { new Bubble("Charizard") }, null);
 
         // Act
         machine.PutMoney(10);
@@ -28,7 +28,7 @@ public class StateMachineTests
         var notRandom = new NotRandom { NextRandom = 1 };
         var bubbles = new List<Bubble>() { new Bubble("Charizard"), new Bubble("Mewtwo") };
         var expectedBubble = bubbles[1];
-        var machine = new StateMachine(null, bubbles, notRandom);
+        var machine = StateMachine.New(bubbles, notRandom);
         try
         {
             machine.PutMoney(10);
@@ -55,7 +55,7 @@ public class StateMachineTests
         var notRandom = new NotRandom { NextRandom = 1 };
         var bubbles = new List<Bubble>() { new Bubble("Charizard"), new Bubble("Mewtwo") };
         var expectedBubble = bubbles[1];
-        var machine = new StateMachine(null, bubbles, notRandom);
+        var machine = StateMachine.New(bubbles, notRandom);
 
         machine.PutMoney(10);
         var gotBubble = machine.Turn();

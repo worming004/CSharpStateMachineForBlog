@@ -6,7 +6,7 @@ public class IddleStateTests
 {
     private class NullMachine : StateMachine
     {
-        internal NullMachine() : base(null, new List<Bubble>(), null)
+        internal NullMachine() : base(new List<Bubble>(), null)
         {
         }
         public IState ReceivedState { get; private set; }
