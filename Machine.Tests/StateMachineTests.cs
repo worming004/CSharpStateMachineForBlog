@@ -1,6 +1,6 @@
 namespace Machine.Tests;
 
-public class UnitTest1
+public class StateMachineTests
 {
     private class NotRandom : Random
     {
@@ -44,6 +44,22 @@ public class UnitTest1
 
         // Assert
         Assert.Equal(StateName.Iddle, machine.GetStateName());
+        Assert.Equal(expectedBubble, gotBubble);
+    }
+
+    [Fact]
+    // This is actually the test I'll favor the most. It test a full user case
+    public void Machine_WholeUseCase_UserPutMoney_GotBubbles()
+    {
+        // Arrange
+        var notRandom = new NotRandom { NextRandom = 1 };
+        var bubbles = new List<Bubble>() { new Bubble("Charizard"), new Bubble("Mewtwo") };
+        var expectedBubble = bubbles[1];
+        var machine = new StateMachine(null, bubbles, notRandom);
+
+        machine.PutMoney(10);
+        var gotBubble = machine.Turn();
+
         Assert.Equal(expectedBubble, gotBubble);
     }
 }

@@ -2,7 +2,7 @@ using Machine;
 
 namespace Machine.Tests.Coupling;
 
-public class UnitTest1
+public class IddleStateTests
 {
     private class NullMachine : StateMachine
     {
